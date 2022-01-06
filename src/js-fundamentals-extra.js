@@ -65,7 +65,7 @@ function makeSentence(string) {
   ) {
     return string[0].toUpperCase() + string.slice(1).toLowerCase();
   } else {
-    return string[0].toUpperCase() + string.slice(1).toLowerCase() + '.'
+    return string[0].toUpperCase() + string.slice(1).toLowerCase() + ".";
   }
 }
 
@@ -81,15 +81,16 @@ function makeSentence(string) {
 //
 // TODO: write code below
 
-function fileExtension (file) {
-  if (file.includes('.png')) {
-    return file = "png"
+function fileExtension(file) {
+  if (file.includes(".png")) {
+    return (file = "png");
   }
-  if (file.includes('pdf')) {
-    return file = "pdf"
-  } else { return file = '' }
+  if (file.includes(".pdf")) {
+    return (file = "pdf");
+  } else {
+    return (file = "");
+  }
 }
-
 
 // Range
 //
@@ -103,9 +104,8 @@ function fileExtension (file) {
 // TODO: write code below
 
 function range(array) {
-    return Math.max.apply(null, array) - Math.min.apply(null, array)
-  }
-
+  return Math.max.apply(null, array) - Math.min.apply(null, array);
+}
 
 // CheckTransactions
 //
@@ -123,14 +123,16 @@ function range(array) {
 // with a reference to your function.
 //
 // TODO: write code below
-let sumTransactions = 0
 
-function checkTransactions (transactions, balance, overdraft) {
-
-
-for(let i =0; i < transactions.length; i++) {
-  sumTransactions = sumTransactions + array[i]
- } return sumTransactions+balance+overdraft
+function checkTransactions(transactions, balance, overdraft) {
+  for (let i = 0; i < transactions.length; i++) {
+    const transaction = transactions[i];
+    balance = balance + transaction;
+    if (balance - overdraft) {
+      return false;
+    }
+  }
+  return true;
 }
 
 // FilmsInGenre
@@ -146,6 +148,16 @@ for(let i =0; i < transactions.length; i++) {
 //
 // TODO: write code below
 
+function filmsInGenre (films, genre) {
+  const names = []
+  for(let i=0; i < films.length; i++) {
+   const film = films[i]
+   if (film.genres.includes(genre)) {
+     names.push(film.name)
+   } 
+  }
+  return names 
+}
 
 
 // TODO: change undefined to be the name of the functions you defined
@@ -172,5 +184,5 @@ module.exports = {
   g: checkTransactions,
 
   //FilmsInGenre
-  h: undefined,
+  h: filmsInGenre,
 };
